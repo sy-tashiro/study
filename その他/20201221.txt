@@ -1,0 +1,17 @@
+■Storage::disk('local')->put('file','Contents');
+localドライブを使う場合、
+設定ファイルで指定したrootディレクトリからの相対位置で全ファイル
+デフォルトでこの値はstorage/appディレクトリに設定されています。
+そのため上記のメソッドファイルstorage/app/file.txtとして保存されます。
+
+
+■Storage::put('avatars/1', $fileContents);
+Storageファサードを使い設定済みのディスクへの操作ができます。たとえばこのファサードのputメソッドを使用し、デフォルトディスクにアバターを保存できます。
+Storageファサードのメソッド呼び出しで最初にdiskメソッドを呼び出さない場合、そのメソッドの呼び出しは自動的にデフォルトディスクに対し実行されます。
+
+
+■Storage::disk('s3')->put($file_path, $request->file('treasurer'), 'private');
+複数ディスクを使用する場合、Storageファサードのdiskメソッドを使用し特定のディスクへアクセスできます。
+
+■move()
+リネームや存在するファイルを新しい場所へ移動するために使用します。
